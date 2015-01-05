@@ -1,0 +1,38 @@
+{
+  "name": "nscale-azure-analyzer",
+  "version": "0.1.0",
+  "description": "Analyze your Azure deployment!",
+  "main": "index.js",
+  "bin": {
+    "nscale-azure-analyze": "analyze.js"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mcdonnelldean/nscale-azure-analyzer.git"
+  },
+  "keywords": [
+    "azure",
+    "analyzer",
+    "deployment",
+    "nscale"
+  ],
+  "author": "Dean McDonnell <mcdonnelldean@outlook.com>",
+  "license": "Artistic License 2.0",
+  "bugs": {
+    "url": "https://github.com/mcdonnelldean/nscale-azure-analyzer/issues"
+  },
+  "homepage": "https://github.com/mcdonnelldean/nscale-azure-analyzer",
+  "dependencies": {
+    "async": "^0.9.0",
+    "azure": "^0.10.2",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.20.1",
+    "must": "^0.12.0",
+    "sinon": "^1.10.2"
+  }
+}
