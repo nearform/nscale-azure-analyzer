@@ -1,0 +1,15 @@
+{
+  "resourceGroups": [
+    {
+      "tags": {
+        "nscale-system": "nsd-test"
+      },
+      "id": "Microsoft.Classic/resourceGroups/acme-system",
+      "name": "acme-test",
+      "type": "Microsoft/resourceGroups",
+      "location": "westeurope"
+    }
+  ],
+  "statusCode": 200,
+  "requestId": "c81701f2-385c-410c-9332-c22c50bad6d9"
+}

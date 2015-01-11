@@ -17,12 +17,13 @@
 var async = require('async');
 
 var fetchAzureData = require('./lib/fetchAzureData.js');
-var parseResourceGroups = require('./lib/parseResourceGroup.js');
+var parseResourceGroups = require('./lib/parseResourceGroups.js');
 var parseVirtualNetworks = require('./lib/parseVirtualNetworks.js');
 var parseStorageAccounts = require('./lib/parseStorageAccounts.js');
 var parseCloudServices = require('./lib/parseCloudServices.js');
 var parseLoadBalancers = require('./lib/parseLoadBalancers.js');
 var parseVirtualMachines = require('./lib/parseVirtualMachines.js');
+var parseSystem = require('./lib/parseSystem.js');
 var postProcessing = require('./lib/postProcessing.js');
 
 var baseResult = function(config, system) {
@@ -48,6 +49,7 @@ exports.analyze = function analyze(config, system, callback) {
     parseCloudServices,
     parseLoadBalancers,
     parseVirtualMachines,
+    parseSystem,
     postProcessing
   ];
 

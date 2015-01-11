@@ -1,0 +1,34 @@
+{
+  "resources": [
+    {
+      "tags": {},
+      "id": "Microsoft.ClassicCompute/domainNames/acme-test",
+      "name": "acme-test",
+      "type": "Microsoft.ClassicCompute/domainNames",
+      "location": "westeurope"
+    },
+    {
+      "tags": {},
+      "id": "Microsoft.ClassicCompute/virtualMachines/acme-test-app",
+      "name": "acme-test-app",
+      "type": "Microsoft.ClassicCompute/virtualMachines",
+      "location": "westeurope"
+    },
+    {
+      "tags": {},
+      "id": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+      "name": "acme-test-vnet",
+      "type": "Microsoft.ClassicNetwork/virtualNetworks",
+      "location": "westeurope"
+    },
+    {
+      "tags": {},
+      "id": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+      "name": "acmeteststorage",
+      "type": "Microsoft.ClassicStorage/storageAccounts",
+      "location": "westeurope"
+    }
+  ],
+  "statusCode": 200,
+  "requestId": "25c821bd-7dd8-479e-b770-224f41e1f4df"
+}

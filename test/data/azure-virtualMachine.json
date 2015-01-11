@@ -1,0 +1,102 @@
+{
+  "resource": {
+    "tags": {},
+    "id": "Microsoft.ClassicCompute/virtualMachines/acme-test-app",
+    "name": "acme-test-app",
+    "type": "Microsoft.ClassicCompute/virtualMachines",
+    "provisioningState": "Succeeded",
+    "location": "westeurope",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "instanceView": {
+        "updateDomain": 0,
+        "faultDomain": 0,
+        "status": "ReadyRole",
+        "powerState": "Started",
+        "privateIpAddress": "10.0.0.4",
+        "publicIpAddresses": [
+          "104.46.60.73"
+        ],
+        "computerName": "acme-test-app",
+        "fullyQualifiedDomainName": "acme-test.cloudapp.net"
+      },
+      "domainName": {
+        "id": "Microsoft.ClassicCompute/domainNames/acme-test",
+        "name": "acme-test",
+        "type": "Microsoft.ClassicCompute/domainNames"
+      },
+      "hardwareProfile": {
+        "platformGuestAgent": true,
+        "size": "Small",
+        "deploymentName": "acme-test",
+        "deploymentId": "ae8737cc477f45bcb64d91b8cd76aa41",
+        "deploymentLabel": "acme-test",
+        "deploymentLocked": false
+      },
+      "networkProfile": {
+        "inputEndpoints": [
+          {
+            "endpointName": "SSH",
+            "publicIpAddress": "104.46.60.73",
+            "privatePort": 22,
+            "publicPort": 22,
+            "protocol": "tcp",
+            "enableDirectServerReturn": false
+          }
+        ],
+        "virtualNetwork": {
+          "subnetNames": [
+            "Subnet-1"
+          ],
+          "id": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+          "name": "acme-test-vnet",
+          "type": "Microsoft.ClassicNetwork/virtualNetworks"
+        }
+      },
+      "storageProfile": {
+        "operatingSystemDisk": {
+          "diskName": "acme-test-acme-test-app-os-1420919884607",
+          "caching": "ReadWrite",
+          "operatingSystem": "Linux",
+          "ioType": "Standard",
+          "sourceImageName": "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_1-LTS-amd64-server-20140927-en-us-30GB",
+          "vhdUri": "https://acmeteststorage.blob.core.windows.net/vhds/acme-test-acme-test-app-os-1420919884607.vhd",
+          "storageAccount": {
+            "id": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+            "name": "acmeteststorage",
+            "type": "Microsoft.ClassicStorage/storageAccounts"
+          }
+        }
+      },
+      "extensions": [
+        {
+          "extension": "DockerExtension",
+          "publisher": "MSOpenTech.Extensions",
+          "version": "0.*",
+          "state": "Enable",
+          "referenceName": "MSOpenTech.Extensions.DockerExtension",
+          "installedVersion": "0.5.1.0",
+          "statuses": [
+            {
+              "status": "Ready"
+            },
+            {
+              "name": "Enable Docker",
+              "status": "Success",
+              "message": "Enabling Docker Completed.",
+              "operation": "Enabling Docker"
+            }
+          ],
+          "timestamp": "2015-01-10T20:05:18Z",
+          "parameters": {
+            "public": {
+              "installonly": "true"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "statusCode": 200,
+  "requestId": "southcentralus:7c9436cb-42d0-4221-a3e0-660980a06d07"
+}
