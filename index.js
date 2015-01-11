@@ -54,9 +54,7 @@ exports.analyze = function analyze(config, system, callback) {
   var result = baseResult(config, system);
 
   var onNext = function(func, done) {
-    func(config, result, function(err) {
-      done(null);
-    });
+    func(config, result, done);
   };
 
   var complete = function(err) {

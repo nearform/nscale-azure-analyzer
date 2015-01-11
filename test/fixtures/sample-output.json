@@ -1,0 +1,168 @@
+{
+  "name": "nsd-test",
+  "namespace": "nsd",
+  "id": "4624e815-f814-4802-89b4-e33340a6af46",
+  "containerDefinitions": [
+    {
+      "id": "Microsoft.Classic/resourceGroups/acme-test-system",
+      "nativeId": "Microsoft.Classic/resourceGroups/acme-test-system",
+      "name": "acme-test-system",
+      "type": "azure-rg",
+      "specific": {
+        "resourceId": "Microsoft.Classic/resourceGroups/acme-test-system",
+        "resourceName": "acme-test-system",
+        "resourceType": "Microsoft.Classic/resourceGroups"
+      }
+    },
+    {
+      "id": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+      "nativeId": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+      "name": "acmeteststorage",
+      "type": "azure-sa",
+      "specific": {
+        "resourceId": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+        "resourceName": "acmeteststorage",
+        "resourceType": "Microsoft.ClassicStorage/storageAccounts"
+      }
+    },
+    {
+      "id": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+      "nativeId": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+      "name": "acme-test-vnet",
+      "type": "azure-vn",
+      "specific": {
+        "resourceId": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+        "resourceName": "acme-test-vnet",
+        "resourceType": "Microsoft.ClassicNetwork/virtualNetworks"
+      }
+    },
+    {
+      "id": "Microsoft.ClassicCompute/domainNames/acme-test",
+      "nativeId": "Microsoft.ClassicCompute/domainNames/acme-test",
+      "name": "acme-test",
+      "type": "azure-cs",
+      "specific": {
+        "resourceId": "Microsoft.ClassicCompute/domainNames/acme-test",
+        "resourceName": "acme-test",
+        "resourceType": "Microsoft.ClassicCompute/domainNames"
+      }
+    },
+    {
+      "id": "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_1-LTS-amd64-server-20140927-en-us-30GB",
+      "nativeId": "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_1-LTS-amd64-server-20140927-en-us-30GB",
+      "name": "acme-test-app",
+      "type": "azure-vm",
+      "specific": {
+        "resourceId": "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_1-LTS-amd64-server-20140927-en-us-30GB",
+        "resourceName": "acme-test-app",
+        "resourceType": "Microsoft.ClassicCompute/virtualMachines"
+      }
+    }
+  ],
+  "topology": {
+    "containers": {
+      "Microsoft.Classic/resourceGroups/acme-test-system": {
+        "id": "Microsoft.Classic/resourceGroups/acme-test-system",
+        "nativeId": "Microsoft.Classic/resourceGroups/acme-test-system",
+        "name": "acme-test-system",
+        "containedBy": null,
+        "containerDefinitionId": "Microsoft.Classic/resourceGroups/acme-test-system",
+        "contains": [
+          "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+          "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+          "Microsoft.ClassicCompute/domainNames/acme-test",
+          "Microsoft.ClassicCompute/virtualMachines/acme-test-app"
+        ],
+        "type": "azure-rg",
+        "specific": {
+          "resourceId": "Microsoft.Classic/resourceGroups/acme-test-system",
+          "resourceName": "acme-test-system",
+          "resourceType": "Microsoft.Classic/resourceGroups",
+          "resourceLocation": "westeurope",
+          "tags": {
+            "nscale-system": "nsd-test"
+          }
+        }
+      },
+      "Microsoft.ClassicStorage/storageAccounts/acmeteststorage": {
+        "id": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+        "nativeId": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+        "name": "acmeteststorage",
+        "containedBy": "Microsoft.Classic/resourceGroups/acme-test-system",
+        "containerDefinitionId": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+        "contains": [
+          "Microsoft.ClassicCompute/virtualMachines/acme-test-app"
+        ],
+        "type": "azure-sa",
+        "specific": {
+          "resourceId": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+          "resourceName": "acmeteststorage",
+          "resourceType": "Microsoft.ClassicStorage/storageAccounts",
+          "resourceLocation": "westeurope",
+          "resourceGroupId": "Microsoft.Classic/resourceGroups/acme-test-system"
+        }
+      },
+      "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet": {
+        "id": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+        "nativeId": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+        "name": "acme-test-vnet",
+        "containedBy": "Microsoft.Classic/resourceGroups/acme-test-system",
+        "containerDefinitionId": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+        "contains": [
+          "Microsoft.ClassicCompute/domainNames/acme-test",
+          "Microsoft.ClassicCompute/virtualMachines/acme-test-app"
+        ],
+        "type": "azure-vn",
+        "specific": {
+          "resourceId": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+          "resourceName": "acme-test-vnet",
+          "resourceType": "Microsoft.ClassicNetwork/virtualNetworks",
+          "resourceLocation": "westeurope",
+          "resourceGroupId": "Microsoft.Classic/resourceGroups/acme-test-system"
+        }
+      },
+      "Microsoft.ClassicCompute/domainNames/acme-test": {
+        "id": "Microsoft.ClassicCompute/domainNames/acme-test",
+        "nativeId": "Microsoft.ClassicCompute/domainNames/acme-test",
+        "name": "acme-test",
+        "containedBy": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+        "containerDefinitionId": "Microsoft.ClassicCompute/domainNames/acme-test",
+        "contains": [
+          "Microsoft.ClassicCompute/virtualMachines/acme-test-app"
+        ],
+        "type": "azure-cs",
+        "specific": {
+          "resourceId": "Microsoft.ClassicCompute/domainNames/acme-test",
+          "resourceName": "acme-test",
+          "resourceType": "Microsoft.ClassicCompute/domainNames",
+          "resourceLocation": "westeurope",
+          "resourceGroupId": "Microsoft.Classic/resourceGroups/acme-test-system",
+          "virtualNetworkId": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet"
+        }
+      },
+      "Microsoft.ClassicCompute/virtualMachines/acme-test-app": {
+        "id": "Microsoft.ClassicCompute/virtualMachines/acme-test-app",
+        "nativeId": "Microsoft.ClassicCompute/virtualMachines/acme-test-app",
+        "name": "acme-test-app",
+        "containedBy": "Microsoft.ClassicCompute/domainNames/acme-test",
+        "containerDefinitionId": "Microsoft.ClassicCompute/virtualMachines/acme-test-app",
+        "contains": [],
+        "type": "azure-vm",
+        "specific": {
+          "publicIpAddress": "104.46.60.73",
+          "privateIpAddress": "10.0.0.4",
+          "imageId": "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_1-LTS-amd64-server-20140927-en-us-30GB",
+          "imageUri": "https://acmeteststorage.blob.core.windows.net/vhds/acme-test-acme-test-app-os-1420919884607.vhd",
+          "resourceId": "Microsoft.ClassicCompute/virtualMachines/acme-test-app",
+          "resourceName": "acme-test-app",
+          "resourceType": "Microsoft.ClassicCompute/virtualMachines",
+          "resourceLocation": "westeurope",
+          "resourceGroupId": "Microsoft.Classic/resourceGroups/acme-test-system",
+          "virtualNetworkId": "Microsoft.ClassicNetwork/virtualNetworks/acme-test-vnet",
+          "storageAccountId": "Microsoft.ClassicStorage/storageAccounts/acmeteststorage",
+          "cloudServiceId": "Microsoft.ClassicCompute/domainNames/acme-test"
+        }
+      }
+    }
+  }
+}
