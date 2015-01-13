@@ -17,6 +17,7 @@
 var async = require('async');
 
 var validateConfig = require('./lib/validateConfig.js');
+var createBaseResult = require('./lib/createBaseResult.js');
 
 var fetchAzureData = require('./lib/fetchAzureData.js');
 var parseResourceGroups = require('./lib/parseResourceGroups.js');
@@ -28,37 +29,11 @@ var parseVirtualMachines = require('./lib/parseVirtualMachines.js');
 var parseSystem = require('./lib/parseSystem.js');
 var postProcessing = require('./lib/postProcessing.js');
 
-var baseResult = function(config, system) {
-  return {
-    name: system.name || config.name,
-    namespace: system.namespace || config.namespace,
-    id: system.systemId || config.systemId,
-    containerDefinitions: [],
-    topology: {
-      containers: {}
-    }
-  };
-};
-
 exports.analyze = function analyze(config, system, callback) {
-  var result = validateConfig(config);
-  if (result.failed) return callback(result.message);
+  var configResult = validateConfig(config);
+  if (configResult.failed) return callback(configResult.message);
 
-  system = system || {};
-
-  var series = [
-    fetchAzureData,
-    parseResourceGroups,
-    parseStorageAccounts,
-    parseVirtualNetworks,
-    parseCloudServices,
-    parseLoadBalancers,
-    parseVirtualMachines,
-    parseSystem,
-    postProcessing
-  ];
-
-  var result = baseResult(config, system);
+  var result = createBaseResult(config, system);
 
   var onNext = function(func, done) {
     func(config, result, done);
@@ -67,6 +42,18 @@ exports.analyze = function analyze(config, system, callback) {
   var complete = function(err) {
     callback(err, result);
   };
+
+  var series = [
+  fetchAzureData,
+  parseResourceGroups,
+  parseStorageAccounts,
+  parseVirtualNetworks,
+  parseCloudServices,
+  parseLoadBalancers,
+  parseVirtualMachines,
+  parseSystem,
+  postProcessing
+  ];
 
   async.eachSeries(series, onNext, complete);
 };
