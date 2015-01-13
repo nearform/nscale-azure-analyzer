@@ -77,7 +77,7 @@ analyzer.analyze(config, null, function(err, result) {
 Regardless of installation method, a particular set of fields are required to be present in the config
 file. A sample config can be found in the test directory, it is the same as listed below.
 
-'''javascript
+```javascript
 {
   "systemId": "4624e815-f814-4802-89b4-e33340a6af46",
   "namespace": "nsd",
@@ -91,7 +91,7 @@ file. A sample config can be found in the test directory, it is the same as list
     "password": "YoUrPA$$WorD"
   }
 }
-'''
+```
 
 ## License
 
