@@ -73,6 +73,26 @@ analyzer.analyze(config, null, function(err, result) {
 });
 ```
 
+## Configuration
+Regardless of installation method, a particular set of fields are required to be present in the config
+file. A sample config can be found in the test directory, it is the same as listed below.
+
+'''javascript
+{
+  "systemId": "4624e815-f814-4802-89b4-e33340a6af46",
+  "namespace": "nsd",
+  "name": "nsd-test",
+  "azureConfig": {
+    "subscriptionId": "48f9edd7-b74a-40fe-9a73-278967396ce3",
+    "tenantId": "a6e50cd3-0b8a-4390-b5cc-5b927d28608d",
+    "authorityUrl": "https://login.windows.net",
+    "clientId": "277659f3-0ae5-4161-8400-962c89752676",
+    "username": "admin@yourservice.onmicrosoft.com",
+    "password": "YoUrPA$$WorD"
+  }
+}
+'''
+
 ## License
 
 Copyright (c) 2014 Nearform and other contributors
