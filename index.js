@@ -16,6 +16,8 @@
 
 var async = require('async');
 
+var validateConfig = require('./lib/validateConfig.js');
+
 var fetchAzureData = require('./lib/fetchAzureData.js');
 var parseResourceGroups = require('./lib/parseResourceGroups.js');
 var parseVirtualNetworks = require('./lib/parseVirtualNetworks.js');
@@ -39,6 +41,9 @@ var baseResult = function(config, system) {
 };
 
 exports.analyze = function analyze(config, system, callback) {
+  var result = validateConfig(config);
+  if (result.failed) return callback(result.message);
+
   system = system || {};
 
   var series = [
