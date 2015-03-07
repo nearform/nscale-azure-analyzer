@@ -2,7 +2,7 @@
   "name": "nscale-azure-analyzer",
   "version": "0.1.0",
   "description": "Analyze your Azure deployment!",
-  "main": "index.js",
+  "main": "lib/analyzer.js",
   "bin": {
     "nscale-azure-analyze": "lib/commandLineTool.js"
   },
