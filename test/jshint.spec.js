@@ -1,7 +1,5 @@
-#!/usr/bin/env node
-
 /*
- * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
+ * THIS SOFTWARE IS PROVIDED 'AS IS' AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
@@ -16,24 +14,4 @@
 
 'use strict';
 
-var fs = require('fs');
-var analyzer = require('./');
-
-var configFile = process.argv[2];
-if (!configFile) {
-  console.log('Missing config');
-  process.exit(-1);
-}
-
-var config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
-console.log('Analyzing...');
-
-analyzer.analyze(config, null, function(err, result) {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
-
-  console.log(JSON.stringify(result, null, 2));
-  process.exit(0);
-});
+require('mocha-jshint')();

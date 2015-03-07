@@ -1,3 +1,17 @@
+/*
+ * THIS SOFTWARE IS PROVIDED 'AS IS' AND ANY EXPRESSED OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
 'use strict';
 
 var expect = require('must');
@@ -5,13 +19,16 @@ var expect = require('must');
 var postProcessing = require('../lib/postProcessing.js');
 
 describe('postProcessing.js:', function() {
-  it('should err on missing result', function() {
+
+  it('should err on missing result', function(done) {
     postProcessing(null, null, function(err) {
       expect(err).to.be.truthy();
+
+      done();
     });
   });
 
-  it('should remove the resources field from the result', function() {
+  it('should remove the resources field from the result', function(done) {
     var emptyResult = {
       containerDefinitions: [],
       topology: {
@@ -23,7 +40,11 @@ describe('postProcessing.js:', function() {
     };
 
     postProcessing(null, emptyResult, function(err) {
+      expect(err).to.be.null();
+
       expect(emptyResult.resources).to.be.falsy();
+
+      done();
     });
   });
 });
