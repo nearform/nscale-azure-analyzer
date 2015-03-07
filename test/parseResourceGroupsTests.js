@@ -1,3 +1,17 @@
+/*
+ * THIS SOFTWARE IS PROVIDED 'AS IS' AND ANY EXPRESSED OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
 'use strict';
 
 var expect = require('must');
@@ -30,28 +44,37 @@ describe('parseResourceGroups.js:', function() {
     });
   });
 
-  it('should err on missing result', function() {
+  it('should err on missing result', function(done) {
     parseResourceGroups(null, null, function(err) {
       expect(err).to.be.truthy();
+
+      done();
     });
   });
 
-  it('should not err with valid result', function() {
+  it('should not err with valid result', function(done) {
     parseResourceGroups(null, emptyResult, function(err) {
       expect(err).to.be.falsy();
+
+      done();
     });
   });
 
-  it('should not modify result unless there is data to do so', function() {
+  it('should not modify result unless there is data to do so', function(done) {
     var initialResult = _.cloneDeep(emptyResult);
     parseResourceGroups(null, emptyResult, function(err) {
+      expect(err).to.be.null();
       expect(emptyResult).to.be.eql(initialResult);
+
+      done();
     });
   });
 
-  it('should create a valid container entry', function() {
+  it('should create a valid container entry', function(done) {
     parseResourceGroups(null, basicResult, function(err) {
-      var container = basicResult.topology.containers['rgId'];
+      expect(err).to.be.null();
+
+      var container = basicResult.topology.containers.rgId;
       expect(container).to.be.truthy();
 
       expect(container.id).to.be.equal('rgId');
@@ -67,11 +90,15 @@ describe('parseResourceGroups.js:', function() {
       expect(container.specific.resourceType).to.be.equal('rgType');
       expect(container.specific.resourceLocation).to.be.equal('rgLocation');
       expect(container.specific.tags).to.be.eql([]);
+
+      done();
     });
   });
 
-  it('should create a valid container definition entry', function() {
+  it('should create a valid container definition entry', function(done) {
     parseResourceGroups(null, basicResult, function(err) {
+      expect(err).to.be.null();
+
       var containerDef = basicResult.containerDefinitions[0];
       expect(containerDef).to.be.truthy();
 
@@ -83,6 +110,8 @@ describe('parseResourceGroups.js:', function() {
       expect(containerDef.specific.resourceId).to.be.equal('rgId');
       expect(containerDef.specific.resourceName).to.be.equal('rgName');
       expect(containerDef.specific.resourceType).to.be.equal('rgType');
+
+      done();
     });
   });
 });
